@@ -20,7 +20,8 @@ const [tasks, setTasks] = useState([])
     setNewTask({
     title:"",
     description: "",
-    id:""
+    id:"",
+    createAt: new Date().toLocaleString()
     })
   }
 
@@ -58,6 +59,8 @@ const deleteTask = () => {
       renderItem={({item})=>(
         <View style={styles.taskCard}>
           <Text style={styles.text}>{item.title}</Text>
+          <Text style={styles.textdes}>{item.description}</Text>
+          <Text style={styles.textData}>{item.createAt}</Text>
           <Button title='Del'onPress={() => onHandlerModalDelete (item.id)} color={"#FF3985"} />
           </View>
       )}
@@ -71,7 +74,7 @@ const deleteTask = () => {
           deleteTask()
           setModalVisible(false)
           }}/>
-        <Button title='No' onPress={() => setModalVisible(false)}/>
+        <Button title='No' onPress={() => setModalVisible(false)} style={styles.button}/>
 
       </View>
       </Modal>
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
 
   taskCard:{
   backgroundColor:"#00FF7F",
-   flexDirection: "row",
+   flexDirection: "",
    justifyContent:"space-between",
    padding: 20,
    borderRadius: 50,
@@ -126,10 +129,18 @@ const styles = StyleSheet.create({
   
   text:{
     color:"white",
-    width: "50%",
-    fontSize: 36,
+    padding: 10,
+    fontSize: 30,
   },
   
+  textData:{
+    color:"",
+    fontSize: 10
+  },
+  textdes:{
+    color:"",
+    fontSize: 20
 
+  },
 
 })
