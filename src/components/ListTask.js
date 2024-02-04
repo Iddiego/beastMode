@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,  FlatList } from 'react-native'
 import CardTaskList from './CardTaskList'
 
-const ListTask = ({tasks, onHandlerModalDelete}) => {
+const ListTask = ({tasks, onHandlerModalDelete, screenWidth, updateTaskComplete}) => {
   return (
     <View style={styles.taskContainer}>
         <FlatList
@@ -10,6 +10,8 @@ const ListTask = ({tasks, onHandlerModalDelete}) => {
         renderItem={({item})=>(<CardTaskList
                 item={item}
                 onHandlerModalDelete = {onHandlerModalDelete}
+                screenWidth = {screenWidth}
+                upDateTaskComplete = {updateTaskComplete}
                 />)}
     />
     </View>

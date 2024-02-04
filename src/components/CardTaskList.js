@@ -1,14 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Switch } from 'react-native'
 import React from 'react'
+import ButtonPrimary from './ButtonPrimary'
 
-const CardTaskList = ({item, onHandlerModalDelete}) => {
+const CardTaskList = ({item, onHandlerModalDelete, screenWidth, updateTaskCompleted}) => {
   return (
-    <View style={styles.taskCard}>
-    <Text style={styles.text}>{item.title}</Text>
+    <View style={[styles.taskCard,{width:screenWidth -60}]}>
+    <Text style={styles.text}>Actualizacion: {item.updateAt}</Text>
+    <Text style={styles.text}>Titulo: {item.title}</Text>
     <Text style={styles.textdes}>{item.description}</Text>
     <Text style={styles.textData}>{item.createAt}</Text>
-    <Button title='Del'onPress={() => onHandlerModalDelete (item.id)} color={"#FF3985"} />
-    </View>
+    <View style={styles.completedContainer}/>
+          <Switch
+            value={item.complete}
+            onValueChange={() => updateTaskCompleted(item.id)}
+          />
+          <Text style={styles.textComplete}>{item.completed ? "Completada" : "Pendiente"}</Text>
+  
+    <ButtonPrimary title='DEL'onPress={() => onHandlerModalDelete (item)} color={"#FF3985"} />
+  </View>
   )
 }
 

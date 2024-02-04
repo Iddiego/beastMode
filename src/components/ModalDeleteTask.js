@@ -1,8 +1,11 @@
 import { StyleSheet, Text, View, Modal, Button } from 'react-native'
 
 
-const ModalDeleteTask = ({taskSelected, deleteTask, onHandlerModalDelete, modalVisible}) => {
-    const taskTitle = taskSelected ? taskSelected.title : ''
+const ModalDeleteTask = ({taskSelected,
+                          deleteTask, 
+                          onHandlerModalDelete, 
+                          modalVisible}) => {
+
         return (
             <Modal
             visible ={modalVisible}
@@ -10,9 +13,9 @@ const ModalDeleteTask = ({taskSelected, deleteTask, onHandlerModalDelete, modalV
             onRequestClose={() => onHandlerModalDelete({})}
             >
             
-            <View>
+            <View style={styles.cont}>
             <Text>¿Seguro de eliminar? : {taskSelected.title} </Text>
-            <Button title='Si' onPress={deleteTask}/>
+            <Button title='Si' onPress={deleteTask}  />
             <Button title='No' onPress={() => onHandlerModalDelete({})}/>
             </View>
             </Modal>
@@ -21,4 +24,11 @@ const ModalDeleteTask = ({taskSelected, deleteTask, onHandlerModalDelete, modalV
 
 export default ModalDeleteTask
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+cont:{
+    alignItems:"center",
+    padding: 100
+}
+
+})
